@@ -12,7 +12,7 @@
 @theme {
   --color-primary-blue: rgba(0, 47, 169, 1);
   --font-providence-sans: 'Providence Sans', sans-serif;
-  --font-cabin-sketch: 'Cabin Sketch', cursive;
+  --font-cabin-sketch: 'Cabin Sketch', sans-serif;
   --color-secondary-blue: #c2dcff;
 }
 
