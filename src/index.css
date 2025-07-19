@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'Providence Sans';
+    src: url('./assets/fonts/ProvidenceSans.woff2') format('woff2'),
+        url('./assets/fonts/ProvidenceSans.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+  --color-primary-blue: rgba(0, 47, 169, 1);
+  --font-providence-sans: 'Providence Sans', sans-serif;
+  --font-cabin-sketch: 'Cabin Sketch', cursive;
+  --color-secondary-blue: #c2dcff;
+}
+
+:root {
+  font-family: var(--font-providence-sans);
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--color-secondary-blue);
+  background-color: var(--color-primary-blue);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
