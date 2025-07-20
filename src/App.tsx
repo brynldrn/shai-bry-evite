@@ -1,8 +1,6 @@
 import { TypeAnimation } from 'react-type-animation'
 import './App.css'
 import heart6 from './assets/elements/heart6.gif'
-import heart4 from './assets/elements/heart4.gif'
-import heart5 from './assets/elements/heart5.gif'
 import cheers from './assets/elements/cheers.gif'
 
 function App() {
@@ -18,13 +16,19 @@ function App() {
         <span>Beverly Hills Subdivision, Taytay, Rizal</span>
       </p>
       <div className='fixed top-0 left-0 w-full h-full pointer-events-none'>
-        <img src={heart5} alt="heart" className='size-52 absolute top-4 left-3' />
+        <img src={heart6} alt="heart" className='size-52 absolute top-4 left-3' />
+        {/* small */}
+        <img src={heart6} alt="heart" className='size-12 absolute top-54 left-10' />
+        {/* small */}
+        {/* small */}
+        <img src={heart6} alt="heart" className='size-12 absolute top-56 right-8' />
+        {/* small */}
         <img src={heart6} alt="heart" className='size-32 absolute top-4 right-3' />
-        <img src={heart5} alt="heart" className='size-52 absolute bottom-4 -right-12' />
+        <img src={heart6} alt="heart" className='size-52 absolute bottom-4 -right-12' />
         <img src={heart6} alt="heart" className='size-24 absolute bottom-54 left-3' />
-        <img src={heart4} alt="heart" className='size-32 absolute bottom-64 right-32' />
+        <img src={heart6} alt="heart" className='size-64 absolute bottom-64 left-1/2 -translate-x-1/2' />
         <img src={heart6} alt="heart" className='size-28 absolute bottom-56 right-3' />
-        <img src={heart5} alt="heart" className='size-40 absolute -bottom-4 left-1' />
+        <img src={heart6} alt="heart" className='size-40 absolute -bottom-4 left-1' />
         <img src={cheers} alt="cheers" className='size-42 absolute bottom-0 left-1/2 -translate-x-1/2' />
       </div>
     </section>
