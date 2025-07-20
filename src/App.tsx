@@ -6,10 +6,10 @@ import cheers from './assets/elements/cheers.gif'
 function App() {
 
   return (
-    <section className='flex flex-col items-center justify-center h-dvh py-40 gap-6'>
+    <section className='flex flex-col items-center h-dvh py-40 gap-6'>
       <h1 className='text-2xl line-clamp-2'>we're getting <br /> married!!!</h1>
       <TypeAnimation sequence={['', 500, 'bry + shai']} wrapper='h1' cursor={false} className='font-cabin-sketch text-7xl font-bold' speed={4} deletionSpeed={3} />
-      <p className='flex flex-col items-center gap-0 text-md'>
+      <p className='flex flex-col items-center gap-0 mt-auto text-md'>
         <span className='text-inherit'>18 december 2025</span>
         <a href='https://maps.app.goo.gl/vcPZBkDVYwBsyLbW6' target='_blank' className='!text-inherit !underline'>Burow Café &ndash; Antipolo Beehouse</a>
         <span>113 Beverly Hills Avenue,</span>
