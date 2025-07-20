@@ -8,7 +8,25 @@ function App() {
   return (
     <section className='flex flex-col items-center justify-between h-dvh py-40 gap-6'>
       <h1 className='text-2xl line-clamp-2'>we're getting <br /> married!!!</h1>
-      <TypeAnimation sequence={['', 500, 'bry + shai']} wrapper='h1' cursor={false} className='font-cabin-sketch text-7xl font-bold' speed={4} deletionSpeed={3} />
+      <div className='relative'>
+        <TypeAnimation sequence={['', 500, 'bry + shai']} wrapper='h1' cursor={false} className='font-cabin-sketch text-7xl font-bold' speed={4} deletionSpeed={3} />
+
+        {/* small top of "b" */}
+        <img src={heart6} alt="heart" className='size-12 absolute -top-7 -left-5' />
+        {/* small top of "b" */}
+
+        {/* small top of "i" */}
+        <img src={heart6} alt="heart" className='size-12 absolute -top-7 -right-8' />
+        {/* small top of "i" */}
+
+        {/* medium heart bottom of "b" */}
+        <img src={heart6} alt="heart" className='size-24 absolute -bottom-15 -left-12' />
+        {/* medium heart bottom of "b" */}
+
+        {/* medium heart bottom of "i" */}
+        <img src={heart6} alt="heart" className='size-24 absolute -bottom-15 -right-15' />
+        {/* medium heart bottom of "i" */}
+      </div>
       <p className='flex flex-col items-center gap-0 text-md'>
         <span className='text-inherit'>18 december 2025</span>
         <a href='https://maps.app.goo.gl/vcPZBkDVYwBsyLbW6' target='_blank' className='!text-inherit !underline'>Burow Café &ndash; Antipolo Beehouse</a>
@@ -18,22 +36,6 @@ function App() {
       <div className='fixed top-0 left-0 w-full h-full pointer-events-none'>
         {/* top left */}
         <img src={heart6} alt="heart" className='size-52 absolute top-4 left-3' />
-
-        {/* small top of "b" */}
-        <img src={heart6} alt="heart" className='size-12 absolute top-54 left-10' />
-        {/* small top of "b" */}
-
-        {/* small top of "i" */}
-        <img src={heart6} alt="heart" className='size-12 absolute top-56 right-8' />
-        {/* small top of "i" */}
-
-        {/* medium heart bottom of "b" */}
-        <img src={heart6} alt="heart" className='size-24 absolute top-72 left-2' />
-        {/* medium heart bottom of "b" */}
-
-        {/* medium heart bottom of "i" */}
-        <img src={heart6} alt="heart" className='size-24 absolute top-72 right-1' />
-        {/* medium heart bottom of "i" */}
 
         {/* top right */}
         <img src={heart6} alt="heart" className='size-32 absolute top-4 right-3' />
