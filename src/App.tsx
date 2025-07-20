@@ -29,7 +29,7 @@ function App() {
       </div>
       <p className='flex flex-col items-center gap-0 text-md'>
         <span className='text-inherit'>18 december 2025</span>
-        <a href='https://maps.app.goo.gl/vcPZBkDVYwBsyLbW6' target='_blank' className='!text-inherit !underline'>Burow Café &ndash; Antipolo Beehouse</a>
+        <a href='https://maps.app.goo.gl/vcPZBkDVYwBsyLbW6' target='_blank' className='!text-inherit !underline'>Burrow Café &ndash; Antipolo Beehouse</a>
         <span>113 Beverly Hills Avenue,</span>
         <span>Beverly Hills Subdivision, Taytay, Rizal</span>
       </p>
