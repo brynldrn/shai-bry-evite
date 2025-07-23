@@ -3,6 +3,7 @@ import './App.css'
 import heart6 from './assets/elements/heart6.gif'
 import cheers from './assets/elements/cheers.gif'
 import plate from './assets/elements/plate.gif'
+import dress from './assets/elements/dress.gif'
 
 function App() {
 
@@ -139,6 +140,7 @@ function App() {
         {/* animated SVGs */}
         <div className='mt-auto relative w-full h-10'>
           <img src={plate} alt="plate" className='size-42 absolute -top-14 -left-12' />
+          <img src={dress} alt="dress" className='size-42 absolute -top-18 left-9' />
         </div>
       </section>
     </>
