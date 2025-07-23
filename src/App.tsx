@@ -127,11 +127,12 @@ function App() {
           {/* brides's side */}
           <div className='flex flex-col items-center'>
             <strong>team shai</strong>
+            <span>Sedric Suringa</span>
             <span>Ruffie Grace Esguerra</span>
             <span>Janine Kyle Ledesma</span>
-            <span>Samantha Julianne Mercado</span>
+            <span className='text-sm'>Samantha Julianne Mercado</span>
             <span>Nica Zenarosa</span>
-            <span>James Edward Baldonado</span>
+            <span className='text-sm'>James Edward Baldonado</span>
             <span>Nathaniel Jovie Pineda</span>
             <span>Ralph Siscar</span>
           </div>
