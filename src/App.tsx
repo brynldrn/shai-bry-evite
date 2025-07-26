@@ -1,9 +1,14 @@
 import { TypeAnimation } from 'react-type-animation'
 import './App.css'
 import heart6 from './assets/elements/heart6.gif'
-import cheers from './assets/elements/cheers.gif'
 import plate from './assets/elements/plate.gif'
 import dress from './assets/elements/dress.gif'
+import cheers2 from './assets/elements/cheers-new.gif'
+import rings from './assets/elements/rings.gif'
+import cake from './assets/elements/cake.gif'
+import note from './assets/elements/note.gif'
+import pets from './assets/elements/pets.gif'
+import cheersSecondary from './assets/elements/cheers-secondary.gif'
 
 function App() {
 
@@ -38,13 +43,18 @@ function App() {
         </p>
         <div className='absolute top-0 left-0 w-full h-full pointer-events-none'>
           {/* top left */}
-          <img src={heart6} alt="heart" className='size-52 absolute top-4 left-3' />
+          <img src={heart6} alt="heart" className='size-22 absolute top-4 left-3' />
+
+          {/* top center */}
+          <img src={pets} alt="heart" className='size-62 absolute -top-5 left-1/2 -translate-x-1/2' />
 
           {/* top right */}
-          <img src={heart6} alt="heart" className='size-32 absolute top-4 right-3' />
+          <img src={heart6} alt="heart" className='size-22 absolute top-4 right-3' />
+
+
           <img src={heart6} alt="heart" className='size-52 absolute bottom-4 -right-12' />
           <img src={heart6} alt="heart" className='size-40 absolute -bottom-4 left-1' />
-          <img src={cheers} alt="cheers" className='size-42 absolute bottom-0 left-1/2 -translate-x-1/2' />
+          <img src={cheersSecondary} alt="cheers" className='size-56 absolute -bottom-10 left-1/2 -translate-x-1/2' />
         </div>
       </section>
 
@@ -71,7 +81,7 @@ function App() {
         </div>
 
         {/* primary sponsors */}
-        <div className='flex flex-col items-center gap-4 text-primary-blue w-full'>
+        <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
           <strong>ninongs &amp; ninangs</strong>
 
           {/* list */}
@@ -100,13 +110,13 @@ function App() {
 
           {/* groom's side */}
           <div className='flex flex-col items-center'>
-            <strong>best man</strong>
+            <strong className='mb-2'>best man</strong>
             <span>Neil Glenn Apale</span>
           </div>
 
           {/* brides's side */}
           <div className='flex flex-col items-center'>
-            <strong>maid of honor</strong>
+            <strong className='mb-2'>maid of honor</strong>
             <span>Cess Oafericua</span>
           </div>
         </div>
@@ -116,7 +126,7 @@ function App() {
 
           {/* groom's side */}
           <div className='flex flex-col items-center'>
-            <strong>team bry</strong>
+            <strong className='mb-2'>team bry</strong>
             <span>Bren Quinalayo</span>
             <span>Brenan Allen Quinalayo</span>
             <span>Lester Almadin</span>
@@ -126,11 +136,11 @@ function App() {
 
           {/* brides's side */}
           <div className='flex flex-col items-center'>
-            <strong>team shai</strong>
+            <strong className='mb-2'>team shai</strong>
             <span>Sedric Suringa</span>
             <span>Ruffie Grace Esguerra</span>
             <span>Janine Kyle Ledesma</span>
-            <span className='text-sm'>Samantha Julianne Mercado</span>
+            <span className='text-xs'>Samantha Julianne Mercado</span>
             <span>Nica Zenarosa</span>
             <span className='text-sm'>James Edward Baldonado</span>
             <span>Nathaniel Jovie Pineda</span>
@@ -139,9 +149,13 @@ function App() {
         </div>
 
         {/* animated SVGs */}
-        <div className='mt-auto relative w-full h-10'>
-          <img src={plate} alt="plate" className='size-42 absolute -top-14 -left-12' />
-          <img src={dress} alt="dress" className='size-42 absolute -top-18 left-9' />
+        <div className='mt-auto relative w-full h-10 max-w-sm'>
+          <img src={plate} alt="plate" className='size-42 absolute -top-14 -left-15' />
+          <img src={dress} alt="dress" className='size-42 absolute -top-18 left-6' />
+          <img src={cheers2} alt="cheers" className='size-42 absolute -top-15 left-24' />
+          <img src={rings} alt="rings" className='size-28 absolute -top-5 right-22' />
+          <img src={cake} alt="cake" className='size-32 absolute -top-8 right-2' />
+          <img src={note} alt="note" className='size-24 absolute -top-2 -right-8' />
         </div>
       </section>
     </>
