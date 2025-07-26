@@ -14,25 +14,25 @@ function App() {
 
   return (
     <>
-      <section className='flex flex-col items-center justify-between h-dvh py-40 gap-6 relative overflow-hidden'>
+      <section className='flex flex-col items-center justify-between h-dvh py-40 gap-6 relative overflow-hidden border-8 border-dotted'>
         <h1 className='text-2xl line-clamp-2 font-normal'>we're getting <br /> married!!!</h1>
         <div className='relative'>
           <TypeAnimation sequence={['', 500, 'bry + shai']} wrapper='h1' cursor={false} className='font-cabin-sketch text-7xl font-bold' speed={4} deletionSpeed={3} />
 
           {/* small top of "b" */}
-          <img src={heart6} alt="heart" className='size-12 absolute -top-7 -left-5' />
+          {/* <img src={heart6} alt="heart" className='size-12 absolute -top-7 -left-5' /> */}
           {/* small top of "b" */}
 
           {/* small top of "i" */}
-          <img src={heart6} alt="heart" className='size-12 absolute -top-7 -right-8' />
+          {/* <img src={heart6} alt="heart" className='size-12 absolute -top-7 -right-8' /> */}
           {/* small top of "i" */}
 
           {/* medium heart bottom of "b" */}
-          <img src={heart6} alt="heart" className='size-24 absolute -bottom-15 -left-12' />
+          {/* <img src={heart6} alt="heart" className='size-24 absolute -bottom-15 -left-12' /> */}
           {/* medium heart bottom of "b" */}
 
           {/* medium heart bottom of "i" */}
-          <img src={heart6} alt="heart" className='size-24 absolute -bottom-15 -right-15' />
+          {/* <img src={heart6} alt="heart" className='size-24 absolute -bottom-15 -right-15' /> */}
           {/* medium heart bottom of "i" */}
         </div>
         <p className='flex flex-col items-center gap-0 text-md'>
