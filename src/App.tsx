@@ -1,14 +1,12 @@
 import { TypeAnimation } from 'react-type-animation'
 import './App.css'
-import heart6 from './assets/elements/heart6.gif'
-import plate from './assets/elements/plate.gif'
-import dress from './assets/elements/dress.gif'
-import cheers2 from './assets/elements/cheers-new.gif'
-import rings from './assets/elements/rings.gif'
-import cake from './assets/elements/cake.gif'
-import note from './assets/elements/note.gif'
 import pets from './assets/elements/pets.gif'
+import heart6 from './assets/elements/heart6.gif'
 import cheersSecondary from './assets/elements/cheers-secondary.gif'
+import barong from './assets/barong.png'
+import guests from './assets/guests.png'
+import Separator from './components/separator'
+import Container from './components/Container'
 
 function App() {
 
@@ -66,10 +64,7 @@ function App() {
       </section>
 
       {/* page 2 */}
-      <section className='bg-secondary-blue p-4 flex flex-col items-center justify-center gap-8 py-8 overflow-hidden'>
-        <h1 className='font-cabin-sketch text-2xl font-bold text-primary-blue'>bry + shai</h1>
-        <strong className='font-providence-sans text-primary-blue'>our wedding squad</strong>
-
+      <Container>
         {/* parents */}
         <div className='grid grid-cols-2 items-center gap-4 text-primary-blue w-full'>
           {/* groom */}
@@ -154,17 +149,145 @@ function App() {
             <span>Ralph Siscar</span>
           </div>
         </div>
+      </Container>
 
-        {/* animated SVGs */}
-        <div className='mt-auto relative w-full h-10 max-w-sm'>
-          <img src={plate} alt="plate" className='size-42 absolute -top-14 -left-15' />
-          <img src={dress} alt="dress" className='size-42 absolute -top-18 left-6' />
-          <img src={cheers2} alt="cheers" className='size-42 absolute -top-15 left-24' />
-          <img src={rings} alt="rings" className='size-28 absolute -top-5 right-22' />
-          <img src={cake} alt="cake" className='size-32 absolute -top-8 right-2' />
-          <img src={note} alt="note" className='size-24 absolute -top-2 -right-8' />
+      <Separator />
+
+      {/* page 3 */}
+      <Container>
+        <div className='flex flex-col items-center gap-10 w-full pb-10'>
+          {/* cherish */}
+          <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
+            <strong className='font-providence-sans'>our wedding squad</strong>
+            <span className='text-sm'>
+              We’d love for you to be truly with us as we say “I do.” <br />
+              Phones down, hearts open — be present, not posted. <br />
+              We promise to share the good pics later!
+            </span>
+          </div>
+          {/* gifts */}
+          <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
+            <strong className='font-providence-sans'>gifts</strong>
+            <span className='text-sm'>
+              Your presence is all we ask, <br />
+              but if you’re feeling extra sweet, <br />
+              a little cash would be a lovely treat... <br />
+              for date nights, dreams, and maybe extra fries. <br />
+            </span>
+          </div>
         </div>
-      </section>
+      </Container>
+
+      <Separator />
+
+      {/* page 4 */}
+      <Container>
+
+        {/* primary sponsors */}
+        <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
+          <strong>ninongs and ninangs</strong>
+          <span>barong and slacks/skirts</span>
+
+          <img src={barong} alt="barong" className='w-full aspect-auto' />
+        </div>
+
+        {/* guests */}
+        <div className='flex flex-col items-center gap-2 text-primary-blue w-full mb-10'>
+          <strong>guests' dress code</strong>
+          <span>
+            please celebrate with us in vibrant colors! <br />
+            (strictly no white and black/dark attire) <br />
+            <strong>girls:</strong> long dresses, flowy, floral, and festive <br />
+            <strong>boys:</strong> long / short sleeves polo and slacks (black, khaki, gray, white)
+          </span>
+
+          <img src={guests} alt="guests" className='w-full aspect-auto' />
+        </div>
+      </Container>
+
+      <Separator />
+
+      <Container>
+        <div className='flex flex-col items-center gap-4 text-primary-blue w-full'>
+          <span className='text-center w-full block'>
+            We are thrilled to celebrate our special day with  <br />
+            our immediate family and closest friends. <br />
+            Cheers to our favorite people.
+          </span>
+
+          {/* guests list */}
+          <div className='grid grid-cols-2 justify-between w-full'>
+            {/* quinalayo */}
+            <ul className='flex flex-col items-center gap-0 text-center'>
+              <li>Allan Quinalayo</li>
+              <li>Ma. Cristina Quinalayo</li>
+              <li>Bren Quinalayo</li>
+              <li>Grace Mendova</li>
+              <li>Brenan Allen Quinalayo</li>
+              <li>Benjamin Quinalayo</li>
+              <li>Jennifer Quinalayo</li>
+              <li>Maricar Talion</li>
+              <li>Elaiza Kriselle Talion</li>
+              <li>Marivic Armado</li>
+              <li>Jerry Armado</li>
+              <li>Jamie Armado</li>
+              <li>James Aron Armado</li>
+              <li>Michael Empaynado</li>
+              <li>Mia Arianne Empaynado</li>
+              <li>Matteo Empaynado</li>
+              <li>Anthony Quinalayo</li>
+              <li>Abigail Jean Quinalayo</li>
+              <li>Eunice Ramos</li>
+
+              {/* friends */}
+              <li>Neil Glenn Apale</li>
+              <li>Bea Apale</li>
+              <li>Lester Almadin</li>
+              <li>Joselle Martizano</li>
+              <li>Alfie Durante</li>
+              <li>Cess Durante</li>
+              <li>Mike Ronnel Mendez</li>
+              <li>LJ Mendez</li>
+            </ul>
+
+            {/* suringa */}
+            <ul className='flex flex-col items-center gap-0 text-center'>
+              <li>Saturnino Suringa</li>
+              <li>Arlene Suringa</li>
+              <li>Sedric Suringa</li>
+              <li>Aida Baesa ✝️</li>
+              <li>Juan Baesa ✝️</li>
+              <li>Annaliza Baesa</li>
+              <li>Nicolas James Baesa</li>
+              <li>Alicia Amante</li>
+              <li>Ludovico Amante</li>
+              <li>Kastine Yra Amante</li>
+              <li>Khrystenz Leigh Amante</li>
+              <li>Kegume Kem Amante</li>
+              <li>Aga Baesa</li>
+              <li>Cherry Laquesta</li>
+              <li>Alliyah Vherone Baesa</li>
+              <li>Ayumi Amber Baesa</li>
+              <li>Jake Austin Baesa</li>
+              <li>Ma. Theresa Babol</li>
+              <li>Oliver Benjoe Badong</li>
+              <li>Joseph Nicko Badong</li>
+              <li>Gely Guillermo</li>
+              <li>Eric Guillermo</li>
+
+              {/* friends */}
+              <li>Cess Oafericua</li>
+              <li>Ruffie Grace Esguerra</li>
+              <li>Janine Kyle Ledesma</li>
+              <li>Samantha Julianne Mercado</li>
+              <li>Nica Zenarosa</li>
+              <li>James Edward Baldonado</li>
+              <li>Nathaniel Jovie Pineda</li>
+              <li>Ralph Siscar</li>
+            </ul>
+          </div>
+        </div>
+      </Container>
     </>
   )
 }
