@@ -5,8 +5,10 @@ import heart6 from './assets/elements/heart6.gif'
 import cheersSecondary from './assets/elements/cheers-secondary.gif'
 import barong from './assets/barong.png'
 import guests from './assets/guests.png'
-import Separator from './components/separator'
+import Separator from './components/Separator'
 import Container from './components/Container'
+import pics from './assets/elements/pics.png'
+import gift from './assets/elements/gift.png'
 
 function App() {
 
@@ -65,6 +67,7 @@ function App() {
 
       {/* page 2 */}
       <Container>
+        <strong className='font-providence-sans text-primary-blue'>our wedding squad</strong>
         {/* parents */}
         <div className='grid grid-cols-2 items-center gap-4 text-primary-blue w-full'>
           {/* groom */}
@@ -158,7 +161,10 @@ function App() {
         <div className='flex flex-col items-center gap-10 w-full pb-10'>
           {/* cherish */}
           <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
-            <strong className='font-providence-sans'>our wedding squad</strong>
+            <strong className='font-providence-sans relative'>
+              cherish the moment
+              <img src={pics} alt="pics" className='absolute -top-5 -left-10 aspect-auto animate-bounce w-14' />
+            </strong>
             <span className='text-sm'>
               We’d love for you to be truly with us as we say “I do.” <br />
               Phones down, hearts open — be present, not posted. <br />
@@ -167,7 +173,10 @@ function App() {
           </div>
           {/* gifts */}
           <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
-            <strong className='font-providence-sans'>gifts</strong>
+            <strong className='font-providence-sans relative'>
+              gifts
+              <img src={gift} alt="gift" className='absolute top-0 -left-9 aspect-auto animate-bounce' />
+            </strong>
             <span className='text-sm'>
               Your presence is all we ask, <br />
               but if you’re feeling extra sweet, <br />
