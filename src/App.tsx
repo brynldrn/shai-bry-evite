@@ -199,6 +199,7 @@ function App() {
 
       {/* page 4 */}
       <Container>
+        <strong className='font-providence-sans text-primary-blue'>our wedding guide</strong>
         {/* primary sponsors */}
         <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
           <strong>ninongs and ninangs</strong>
