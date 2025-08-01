@@ -7,14 +7,24 @@ import barong from './assets/barong.png'
 import guests from './assets/guests.png'
 import Separator from './components/Separator'
 import Container from './components/Container'
-import pics from './assets/elements/pics.png'
-import gift from './assets/elements/gift.png'
+import { motion, useScroll } from 'motion/react'
+import useParallax from './hooks/useParallax'
+// import pics from './assets/elements/pics.png'
+// import gift from './assets/elements/gift.png'
 
 function App() {
+  const { scrollYProgress } = useScroll()
+  const topLeft = useParallax(scrollYProgress, 40)
+  const topRight = useParallax(scrollYProgress, 30)
+  const bottomRight = useParallax(scrollYProgress, 10)
+  const bottomLeft = useParallax(scrollYProgress, -20)
 
   return (
     <>
       <section className='flex flex-col items-center justify-between h-dvh py-40 gap-6 relative overflow-hidden'>
+        {/* top center */}
+        <img src={pets} alt="heart" className='size-62 absolute -top-5 left-1/2 -translate-x-1/2' />
+
         <h1 className='text-2xl line-clamp-2 font-normal'>we're getting <br /> married!!!</h1>
         <div className='relative w-full max-w-max'>
           <TypeAnimation sequence={['', 500, 'bry + shai']} wrapper='h1' cursor={false} className='font-cabin-sketch text-7xl font-bold' speed={4} deletionSpeed={3} />
@@ -48,25 +58,23 @@ function App() {
           <span>113 Beverly Hills Avenue,</span>
           <span>Beverly Hills Subdivision, Taytay, Rizal</span>
         </p>
+
         <div className='absolute top-0 left-0 w-full h-full pointer-events-none'>
           {/* top left */}
-          <img src={heart6} alt="heart" className='size-40 absolute top-0 left-0' />
-
-          {/* top center */}
-          <img src={pets} alt="heart" className='size-62 absolute -top-5 left-1/2 -translate-x-1/2' />
+          <motion.img style={{ y: topLeft }} src={heart6} alt="heart" className='size-40 absolute top-0 left-0' />
 
           {/* top right */}
-          <img src={heart6} alt="heart" className='size-22 absolute top-4 right-3' />
+          <motion.img style={{ y: topRight }} src={heart6} alt="heart" className='size-22 absolute top-4 right-3' />
 
 
-          <img src={heart6} alt="heart" className='size-52 absolute bottom-4 -right-12' />
-          <img src={heart6} alt="heart" className='size-40 absolute -bottom-4 left-1' />
-          <img src={cheersSecondary} alt="cheers" className='size-56 absolute -bottom-10 left-1/2 -translate-x-1/2' />
+          <motion.img style={{ y: bottomRight }} src={heart6} alt="heart" className='size-52 absolute bottom-4 -right-12' />
+          <motion.img style={{ y: bottomLeft }} src={heart6} alt="heart" className='size-40 absolute -bottom-4 left-1' />
         </div>
-      </section>
+        <img src={cheersSecondary} alt="cheers" className='size-56 absolute -bottom-10 left-1/2 -translate-x-1/2' />
+      </section >
 
       {/* page 2 */}
-      <Container>
+      <Container showHeader >
         <strong className='font-providence-sans text-primary-blue'>our wedding squad</strong>
         {/* parents */}
         <div className='grid grid-cols-2 items-center gap-4 text-primary-blue w-full'>
@@ -152,18 +160,18 @@ function App() {
             <span>Ralph Siscar</span>
           </div>
         </div>
-      </Container>
+      </Container >
 
       <Separator />
 
       {/* page 3 */}
       <Container>
-        <div className='flex flex-col items-center gap-10 w-full pb-10'>
+        <div className='flex flex-col items-center gap-10 w-full'>
           {/* cherish */}
           <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
             <strong className='font-providence-sans relative'>
               cherish the moment
-              <img src={pics} alt="pics" className='absolute -top-5 -left-10 aspect-auto animate-bounce w-14' />
+              {/* <img src={pics} alt="pics" className='absolute -top-5 -left-10 aspect-auto animate-bounce w-14' /> */}
             </strong>
             <span className='text-sm'>
               We’d love for you to be truly with us as we say “I do.” <br />
@@ -175,7 +183,7 @@ function App() {
           <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
             <strong className='font-providence-sans relative'>
               gifts
-              <img src={gift} alt="gift" className='absolute top-0 -left-9 aspect-auto animate-bounce' />
+              {/* <img src={gift} alt="gift" className='absolute top-0 -left-9 aspect-auto animate-bounce' /> */}
             </strong>
             <span className='text-sm'>
               Your presence is all we ask, <br />
@@ -191,7 +199,6 @@ function App() {
 
       {/* page 4 */}
       <Container>
-
         {/* primary sponsors */}
         <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
           <strong>ninongs and ninangs</strong>
@@ -201,7 +208,7 @@ function App() {
         </div>
 
         {/* guests */}
-        <div className='flex flex-col items-center gap-2 text-primary-blue w-full mb-10'>
+        <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
           <strong>guests' dress code</strong>
           <span>
             please celebrate with us in vibrant colors! <br />
@@ -216,7 +223,7 @@ function App() {
 
       <Separator />
 
-      <Container>
+      <Container showGraphics>
         <div className='flex flex-col items-center gap-4 text-primary-blue w-full'>
           <span className='text-center w-full block'>
             We are thrilled to celebrate our special day with  <br />
@@ -264,8 +271,8 @@ function App() {
               <li>Saturnino Suringa</li>
               <li>Arlene Suringa</li>
               <li>Sedric Suringa</li>
-              <li>Aida Baesa ✝️</li>
-              <li>Juan Baesa ✝️</li>
+              {/* <li>Aida Baesa ✝️</li>
+              <li>Juan Baesa ✝️</li> */}
               <li>Annaliza Baesa</li>
               <li>Nicolas James Baesa</li>
               <li>Alicia Amante</li>
@@ -281,16 +288,16 @@ function App() {
               <li>Ma. Theresa Babol</li>
               <li>Oliver Benjoe Badong</li>
               <li>Joseph Nicko Badong</li>
-              <li>Gely Guillermo</li>
+              <li>Fely Guillermo</li>
               <li>Eric Guillermo</li>
 
               {/* friends */}
               <li>Cess Oafericua</li>
               <li>Ruffie Grace Esguerra</li>
               <li>Janine Kyle Ledesma</li>
-              <li>Samantha Julianne Mercado</li>
+              <li>Samantha Mercado</li>
               <li>Nica Zenarosa</li>
-              <li>James Edward Baldonado</li>
+              <li>James Baldonado</li>
               <li>Nathaniel Jovie Pineda</li>
               <li>Ralph Siscar</li>
             </ul>
