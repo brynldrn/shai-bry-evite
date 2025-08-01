@@ -224,16 +224,15 @@ function App() {
       <Separator />
 
       <Container showGraphics>
-        <div className='flex flex-col items-center gap-4 text-primary-blue w-full'>
-          <span className='text-center w-full block'>
+        <div className='flex flex-col items-center gap-4 text-primary-blue w-full pb-10'>
+          {/* <span className='text-center w-full block'>
             We are thrilled to celebrate our special day with  <br />
             our immediate family and closest friends. <br />
             Cheers to our favorite people.
-          </span>
+          </span> */}
 
           {/* guests list */}
-          <div className='grid grid-cols-2 justify-between w-full'>
-            {/* quinalayo */}
+          {/* <div className='grid grid-cols-2 justify-between w-full'>
             <ul className='flex flex-col items-center gap-0 text-center'>
               <li>Allan Quinalayo</li>
               <li>Ma. Cristina Quinalayo</li>
@@ -255,7 +254,6 @@ function App() {
               <li>Abigail Jean Quinalayo</li>
               <li>Eunice Ramos</li>
 
-              {/* friends */}
               <li>Neil Glenn Apale</li>
               <li>Bea Apale</li>
               <li>Lester Almadin</li>
@@ -266,13 +264,10 @@ function App() {
               <li>LJ Mendez</li>
             </ul>
 
-            {/* suringa */}
             <ul className='flex flex-col items-center gap-0 text-center'>
               <li>Saturnino Suringa</li>
               <li>Arlene Suringa</li>
               <li>Sedric Suringa</li>
-              {/* <li>Aida Baesa ✝️</li>
-              <li>Juan Baesa ✝️</li> */}
               <li>Annaliza Baesa</li>
               <li>Nicolas James Baesa</li>
               <li>Alicia Amante</li>
@@ -291,7 +286,7 @@ function App() {
               <li>Fely Guillermo</li>
               <li>Eric Guillermo</li>
 
-              {/* friends */}
+
               <li>Cess Oafericua</li>
               <li>Ruffie Grace Esguerra</li>
               <li>Janine Kyle Ledesma</li>
@@ -301,7 +296,8 @@ function App() {
               <li>Nathaniel Jovie Pineda</li>
               <li>Ralph Siscar</li>
             </ul>
-          </div>
+          </div> */}
+          <span>Lola Aida &dagger; &amp; Lolo Juan &dagger;</span>
         </div>
       </Container>
     </>
