@@ -5,16 +5,17 @@ import rings from '../assets/elements/rings.gif'
 import cake from '../assets/elements/cake.gif'
 import note from '../assets/elements/note.gif'
 import { motion } from 'motion/react'
+import { twMerge } from 'tailwind-merge'
 
 type ContainerProps = {
   children: React.ReactNode,
   showGraphics?: boolean,
   showHeader?: boolean
-}
+} & React.HTMLAttributes<HTMLDivElement>
 
-export default function Container({ children, showGraphics = false, showHeader = false }: ContainerProps) {
+export default function Container({ children, showGraphics = false, showHeader = false, className, ...rest }: ContainerProps) {
   return (
-    <section className='bg-secondary-blue p-4 flex flex-col items-center justify-center gap-8 py-8 overflow-hidden'>
+    <section className={twMerge('bg-secondary-blue p-4 flex flex-col items-center justify-center gap-8 py-8 overflow-hidden h-svh w-svw', className)} {...rest}>
       {showHeader && (
         <motion.h1 initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ type: 'spring', duration: 1 }} className='font-cabin-sketch text-2xl font-bold text-primary-blue'>bry + shai</motion.h1>
       )}

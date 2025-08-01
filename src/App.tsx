@@ -5,19 +5,63 @@ import heart6 from './assets/elements/heart6.gif'
 import cheersSecondary from './assets/elements/cheers-secondary.gif'
 import barong from './assets/barong.png'
 import guests from './assets/guests.png'
-import Separator from './components/Separator'
 import Container from './components/Container'
-import { motion, useScroll } from 'motion/react'
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'motion/react'
 import useParallax from './hooks/useParallax'
-// import pics from './assets/elements/pics.png'
-// import gift from './assets/elements/gift.png'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type Ref } from 'react'
+import ResizeObserver from "resize-observer-polyfill";
+import { useScrollPercentage } from "react-scroll-percentage";
 
 function App() {
   const { scrollYProgress } = useScroll()
-  const topLeft = useParallax(scrollYProgress, 40)
+  const topLeft = useParallax(scrollYProgress, -40)
   const topRight = useParallax(scrollYProgress, 30)
   const bottomRight = useParallax(scrollYProgress, 10)
   const bottomLeft = useParallax(scrollYProgress, -20)
+
+  const [viewportW, setViewportW] = useState(0)
+  const [scrollRange, setScrollRange] = useState(0)
+  const scrollPerc = useMotionValue(0);
+
+
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const ghostRef = useRef<HTMLDivElement>(null)
+
+  const [containerRef, percentage] = useScrollPercentage({
+    /* Optional options */
+    threshold: 0.1
+  });
+
+  const onResize = useCallback((entries: ResizeObserverEntry[]) => {
+    for (const entry of entries) {
+      setViewportW(entry.contentRect.width)
+    }
+  }, [])
+
+  useLayoutEffect(() => {
+    if (scrollRef.current) {
+      setScrollRange(scrollRef.current.scrollWidth + 300)
+    }
+  }, [scrollRef])
+
+  useLayoutEffect(() => {
+    const resizeObserver = new ResizeObserver(entries => onResize(entries))
+
+    resizeObserver.observe(ghostRef.current as HTMLElement)
+    return () => resizeObserver.disconnect()
+  }, [onResize])
+
+  useEffect(() => {
+    scrollPerc.set(percentage - .2);
+  }, [percentage, scrollPerc]);
+
+  const transform = useTransform(
+    scrollPerc,
+    [0, 1],
+    [0, -scrollRange + viewportW]
+  );
+  const physics = { damping: 15, mass: 0.27, stiffness: 55 };
+  const spring = useSpring(transform, physics);
 
   return (
     <>
@@ -71,236 +115,146 @@ function App() {
           <motion.img style={{ y: bottomLeft }} src={heart6} alt="heart" className='size-40 absolute -bottom-4 left-1' />
         </div>
         <img src={cheersSecondary} alt="cheers" className='size-56 absolute -bottom-10 left-1/2 -translate-x-1/2' />
-      </section >
+      </section>
 
-      {/* page 2 */}
-      <Container showHeader >
-        <strong className='font-providence-sans text-primary-blue'>our wedding squad</strong>
-        {/* parents */}
-        <div className='grid grid-cols-2 items-center gap-4 text-primary-blue w-full'>
-          {/* groom */}
-          <div className='flex flex-col items-center'>
-            <strong className='block mb-2'>parents of the groom</strong>
-            <span>Ma. Cristina Quinalayo</span>
-            <span>Allan Quinalayo</span>
-          </div>
+      <div ref={containerRef as Ref<HTMLDivElement>}>
+        <div className='will-change-transform sticky top-0 bg-secondary-blue overflow-hidden'>
+          <motion.div style={{ x: spring }} className='h-svh relative w-max flex items-center' ref={scrollRef}>
+            <Container showHeader>
+              <strong className='font-providence-sans text-primary-blue'>our wedding squad</strong>
 
-          {/* bride */}
-          <div className='flex flex-col items-center'>
-            <strong className='block mb-2'>parents of the bride</strong>
-            <span>Arlene Suringa</span>
-            <span>Saturnino Suringa</span>
-          </div>
+              <div className='grid grid-cols-2 items-center gap-4 text-primary-blue w-full'>
+
+                <div className='flex flex-col items-center'>
+                  <strong className='block mb-2'>parents of the groom</strong>
+                  <span>Ma. Cristina Quinalayo</span>
+                  <span>Allan Quinalayo</span>
+                </div>
+
+                <div className='flex flex-col items-center'>
+                  <strong className='block mb-2'>parents of the bride</strong>
+                  <span>Arlene Suringa</span>
+                  <span>Saturnino Suringa</span>
+                </div>
+              </div>
+
+              <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
+                <strong>ninongs &amp; ninangs</strong>
+
+                <div className='grid grid-cols-2 items-center gap-4 w-full'>
+
+                  <div className='flex flex-col items-center'>
+                    <span>Maricar Talion</span>
+                    <span>Natalie Rivera</span>
+                    <span>Michael Empaynado</span>
+                    <span>Anthony Quinalayo</span>
+                  </div>
+
+                  <div className='flex flex-col items-center'>
+                    <span>Annaliza Baesa</span>
+                    <span>Ma. Theresa Babol</span>
+                    <span>Fely Guillermo</span>
+                    <span>Ludovico Amante</span>
+                  </div>
+                </div>
+              </div>
+
+
+              <div className='grid grid-cols-2 items-center gap-4 w-full text-primary-blue'>
+
+                <div className='flex flex-col items-center'>
+                  <strong className='mb-2'>best man</strong>
+                  <span>Neil Glenn Apale</span>
+                </div>
+
+                <div className='flex flex-col items-center'>
+                  <strong className='mb-2'>maid of honor</strong>
+                  <span>Cess Oafericua</span>
+                </div>
+              </div>
+
+              <div className='grid grid-cols-2 items-start gap-4 w-full text-primary-blue'>
+
+                <div className='flex flex-col items-center'>
+                  <strong className='mb-2'>team bry</strong>
+                  <span>Bren Quinalayo</span>
+                  <span>Brenan Allen Quinalayo</span>
+                  <span>Lester Almadin</span>
+                  <span>Alfie Durante</span>
+                  <span>Mike Ronnel Mendez</span>
+                </div>
+
+                <div className='flex flex-col items-center'>
+                  <strong className='mb-2'>team shai</strong>
+                  <span>Sedric Suringa</span>
+                  <span>Ruffie Grace Esguerra</span>
+                  <span>Janine Kyle Ledesma</span>
+                  <span className='text-xs'>Samantha Julianne Mercado</span>
+                  <span>Nica Zenarosa</span>
+                  <span className='text-sm'>James Edward Baldonado</span>
+                  <span>Nathaniel Jovie Pineda</span>
+                  <span>Ralph Siscar</span>
+                </div>
+              </div>
+            </Container>
+
+            <Container>
+              <strong className='font-providence-sans text-primary-blue'>our wedding guide</strong>
+
+              <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
+                <strong>ninongs and ninangs</strong>
+                <span>barong and slacks/skirts</span>
+
+                <img src={barong} alt="barong" className='w-svw aspect-auto' />
+              </div>
+
+              <div className='flex flex-col items-center gap-2 text-primary-blue w-svw'>
+                <strong>guests' dress code</strong>
+                <span>
+                  please celebrate with us in vibrant colors! <br />
+                  (strictly no white and black/dark attire) <br />
+                  <strong>girls:</strong> long dresses, flowy, floral, and festive <br />
+                  <strong>boys:</strong> long / short sleeves polo and slacks (black, khaki, gray, white)
+                </span>
+
+                <img src={guests} alt="guests" className='w-full aspect-auto' />
+              </div>
+            </Container>
+
+            <Container showGraphics>
+              <div className='flex flex-col items-center gap-10 w-full'>
+                <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
+                  <strong className='font-providence-sans relative'>
+                    cherish the moment
+                  </strong>
+                  <span className='text-sm'>
+                    We’d love for you to be truly with us as we say “I do.” <br />
+                    Phones down, hearts open — be present, not posted. <br />
+                    We promise to share the good pics later!
+                  </span>
+                </div>
+
+                <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
+                  <strong className='font-providence-sans relative'>
+                    gifts
+                  </strong>
+                  <span className='text-sm'>
+                    Your presence is all we ask, <br />
+                    but if you’re feeling extra sweet, <br />
+                    a little cash would be a lovely treat... <br />
+                    for date nights, dreams, and maybe extra fries. <br />
+                  </span>
+                </div>
+
+                <span>Lola Aida &dagger; &amp; Lolo Juan &dagger;</span>
+              </div>
+            </Container>
+          </motion.div>
         </div>
+        <div ref={ghostRef} style={{ height: scrollRange }} className="ghost box-border" />
+      </div>
 
-        {/* primary sponsors */}
-        <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
-          <strong>ninongs &amp; ninangs</strong>
-
-          {/* list */}
-          <div className='grid grid-cols-2 items-center gap-4 w-full'>
-
-            {/* groom's side */}
-            <div className='flex flex-col items-center'>
-              <span>Maricar Talion</span>
-              <span>Natalie Rivera</span>
-              <span>Michael Empaynado</span>
-              <span>Anthony Quinalayo</span>
-            </div>
-
-            {/* brides's side */}
-            <div className='flex flex-col items-center'>
-              <span>Annaliza Baesa</span>
-              <span>Ma. Theresa Babol</span>
-              <span>Fely Guillermo</span>
-              <span>Ludovico Amante</span>
-            </div>
-          </div>
-        </div>
-
-        {/* best man and maid of honor */}
-        <div className='grid grid-cols-2 items-center gap-4 w-full text-primary-blue'>
-
-          {/* groom's side */}
-          <div className='flex flex-col items-center'>
-            <strong className='mb-2'>best man</strong>
-            <span>Neil Glenn Apale</span>
-          </div>
-
-          {/* brides's side */}
-          <div className='flex flex-col items-center'>
-            <strong className='mb-2'>maid of honor</strong>
-            <span>Cess Oafericua</span>
-          </div>
-        </div>
-
-        {/* teams */}
-        <div className='grid grid-cols-2 items-start gap-4 w-full text-primary-blue'>
-
-          {/* groom's side */}
-          <div className='flex flex-col items-center'>
-            <strong className='mb-2'>team bry</strong>
-            <span>Bren Quinalayo</span>
-            <span>Brenan Allen Quinalayo</span>
-            <span>Lester Almadin</span>
-            <span>Alfie Durante</span>
-            <span>Mike Ronnel Mendez</span>
-          </div>
-
-          {/* brides's side */}
-          <div className='flex flex-col items-center'>
-            <strong className='mb-2'>team shai</strong>
-            <span>Sedric Suringa</span>
-            <span>Ruffie Grace Esguerra</span>
-            <span>Janine Kyle Ledesma</span>
-            <span className='text-xs'>Samantha Julianne Mercado</span>
-            <span>Nica Zenarosa</span>
-            <span className='text-sm'>James Edward Baldonado</span>
-            <span>Nathaniel Jovie Pineda</span>
-            <span>Ralph Siscar</span>
-          </div>
-        </div>
-      </Container >
-
-      <Separator />
-
-      {/* page 3 */}
-      <Container>
-        <div className='flex flex-col items-center gap-10 w-full'>
-          {/* cherish */}
-          <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
-            <strong className='font-providence-sans relative'>
-              cherish the moment
-              {/* <img src={pics} alt="pics" className='absolute -top-5 -left-10 aspect-auto animate-bounce w-14' /> */}
-            </strong>
-            <span className='text-sm'>
-              We’d love for you to be truly with us as we say “I do.” <br />
-              Phones down, hearts open — be present, not posted. <br />
-              We promise to share the good pics later!
-            </span>
-          </div>
-          {/* gifts */}
-          <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
-            <strong className='font-providence-sans relative'>
-              gifts
-              {/* <img src={gift} alt="gift" className='absolute top-0 -left-9 aspect-auto animate-bounce' /> */}
-            </strong>
-            <span className='text-sm'>
-              Your presence is all we ask, <br />
-              but if you’re feeling extra sweet, <br />
-              a little cash would be a lovely treat... <br />
-              for date nights, dreams, and maybe extra fries. <br />
-            </span>
-          </div>
-        </div>
-      </Container>
-
-      <Separator />
-
-      {/* page 4 */}
-      <Container>
-        <strong className='font-providence-sans text-primary-blue'>our wedding guide</strong>
-        {/* primary sponsors */}
-        <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
-          <strong>ninongs and ninangs</strong>
-          <span>barong and slacks/skirts</span>
-
-          <img src={barong} alt="barong" className='w-full aspect-auto' />
-        </div>
-
-        {/* guests */}
-        <div className='flex flex-col items-center gap-2 text-primary-blue w-full'>
-          <strong>guests' dress code</strong>
-          <span>
-            please celebrate with us in vibrant colors! <br />
-            (strictly no white and black/dark attire) <br />
-            <strong>girls:</strong> long dresses, flowy, floral, and festive <br />
-            <strong>boys:</strong> long / short sleeves polo and slacks (black, khaki, gray, white)
-          </span>
-
-          <img src={guests} alt="guests" className='w-full aspect-auto' />
-        </div>
-      </Container>
-
-      <Separator />
-
-      <Container showGraphics>
-        <div className='flex flex-col items-center gap-4 text-primary-blue w-full pb-10'>
-          {/* <span className='text-center w-full block'>
-            We are thrilled to celebrate our special day with  <br />
-            our immediate family and closest friends. <br />
-            Cheers to our favorite people.
-          </span> */}
-
-          {/* guests list */}
-          {/* <div className='grid grid-cols-2 justify-between w-full'>
-            <ul className='flex flex-col items-center gap-0 text-center'>
-              <li>Allan Quinalayo</li>
-              <li>Ma. Cristina Quinalayo</li>
-              <li>Bren Quinalayo</li>
-              <li>Grace Mendova</li>
-              <li>Brenan Allen Quinalayo</li>
-              <li>Benjamin Quinalayo</li>
-              <li>Jennifer Quinalayo</li>
-              <li>Maricar Talion</li>
-              <li>Elaiza Kriselle Talion</li>
-              <li>Marivic Armado</li>
-              <li>Jerry Armado</li>
-              <li>Jamie Armado</li>
-              <li>James Aron Armado</li>
-              <li>Michael Empaynado</li>
-              <li>Mia Arianne Empaynado</li>
-              <li>Matteo Empaynado</li>
-              <li>Anthony Quinalayo</li>
-              <li>Abigail Jean Quinalayo</li>
-              <li>Eunice Ramos</li>
-
-              <li>Neil Glenn Apale</li>
-              <li>Bea Apale</li>
-              <li>Lester Almadin</li>
-              <li>Joselle Martizano</li>
-              <li>Alfie Durante</li>
-              <li>Cess Durante</li>
-              <li>Mike Ronnel Mendez</li>
-              <li>LJ Mendez</li>
-            </ul>
-
-            <ul className='flex flex-col items-center gap-0 text-center'>
-              <li>Saturnino Suringa</li>
-              <li>Arlene Suringa</li>
-              <li>Sedric Suringa</li>
-              <li>Annaliza Baesa</li>
-              <li>Nicolas James Baesa</li>
-              <li>Alicia Amante</li>
-              <li>Ludovico Amante</li>
-              <li>Kastine Yra Amante</li>
-              <li>Khrystenz Leigh Amante</li>
-              <li>Kegume Kem Amante</li>
-              <li>Aga Baesa</li>
-              <li>Cherry Laquesta</li>
-              <li>Alliyah Vherone Baesa</li>
-              <li>Ayumi Amber Baesa</li>
-              <li>Jake Austin Baesa</li>
-              <li>Ma. Theresa Babol</li>
-              <li>Oliver Benjoe Badong</li>
-              <li>Joseph Nicko Badong</li>
-              <li>Fely Guillermo</li>
-              <li>Eric Guillermo</li>
-
-
-              <li>Cess Oafericua</li>
-              <li>Ruffie Grace Esguerra</li>
-              <li>Janine Kyle Ledesma</li>
-              <li>Samantha Mercado</li>
-              <li>Nica Zenarosa</li>
-              <li>James Baldonado</li>
-              <li>Nathaniel Jovie Pineda</li>
-              <li>Ralph Siscar</li>
-            </ul>
-          </div> */}
-          <span>Lola Aida &dagger; &amp; Lolo Juan &dagger;</span>
-        </div>
-      </Container>
+      {/* <div className='h-svh'></div> */}
     </>
   )
 }
