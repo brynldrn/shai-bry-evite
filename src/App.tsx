@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <section className='flex flex-col items-center justify-between h-dvh py-40 gap-6 relative overflow-hidden'>
+      <section className='flex flex-col items-center justify-between h-svh py-40 gap-6 relative overflow-hidden'>
         {/* top center */}
         <img src={pets} alt="heart" className='size-62 absolute -top-5 left-1/2 -translate-x-1/2' />
 
